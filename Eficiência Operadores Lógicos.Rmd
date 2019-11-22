@@ -128,3 +128,16 @@ autoplot(benchMark)
 ```
 
 No gráfico e, principalemnte, na planilha geradas pelo pacote microbenchmark fica evidente como o conhecimento da diferença de comportamento dos operadores lógicos pode gerar em processamento e, consequententemente, em eficiência, no nosso algoritmo.
+
+Agora ao gráfico do linkedin.
+
+```{r}
+benchMark <- summary(benchMark)
+benchMark$expr <- as.matrix(benchMark$expr)
+
+benchMark <- data.frame(do.call(rbind, lapply(strsplit(benchMark$expr, " "), function(i) return(i[i != ""]))), mean = benchMark$mean, stringsAsFactors = F)
+colnames(benchMark)[1:2] <- c("rep", "operator")
+
+ggplot(benchMark) + geom_col(aes(x = rep, y = mean, fill = operator), position = "dodge") + labs(title = "Tempo transcorrido para cada operador", x = "Observações do operador", y = "Media em microsegundos")
+
+```
