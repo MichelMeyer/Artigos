@@ -138,6 +138,5 @@ benchMark$expr <- as.matrix(benchMark$expr)
 benchMark <- data.frame(do.call(rbind, lapply(strsplit(benchMark$expr, " "), function(i) return(i[i != ""]))), mean = benchMark$mean, stringsAsFactors = F)
 colnames(benchMark)[1:2] <- c("rep", "operator")
 
-ggplot(benchMark) + geom_col(aes(x = rep, y = mean, fill = operator), position = "dodge") + labs(title = "Tempo transcorrido para cada operador", x = "Observações do operador", y = "Media em microsegundos")
-
+ggplot(benchMark) + geom_col(aes(x = rep, y = mean, fill = operator), position = "dodge") + labs(title = "Tempo médio transcorrido operador lógico & contra &&", x = "Observações do operador", y = "Microsegundos")
 ```
