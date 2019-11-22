@@ -52,7 +52,7 @@ NA && logical()
 T && NA
 T && NaN
 T && logical()
-T && NULL
+try(T && NULL)
 ```
 O operador & e o operador &&, embora ambos tendo o mesmo papel dentro das operações lógicas, trabalham de forma diferente. O operador && avalia os valores da esquerda para direita e se o operador da esquerda for o suficiente para determinar o resultado lógico, ele não processará o da direita. Outra diferença é o tratamento de vetores nulos, que não são válidos para a operação. Temos um comportamento análogo no operador || (ou).
 
